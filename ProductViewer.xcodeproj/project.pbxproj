@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */; };
 		277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C01FDD897B0048AC60 /* AppDelegate.swift */; };
 		277630C31FDD897B0048AC60 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C21FDD897B0048AC60 /* OffersViewController.swift */; };
 		277630C81FDD897B0048AC60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277630C71FDD897B0048AC60 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
 		277630BD1FDD897B0048AC60 /* ProductViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277630C01FDD897B0048AC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277630C21FDD897B0048AC60 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27582A531FDD92F2000155D5 /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				277630C21FDD897B0048AC60 /* OffersViewController.swift */,
+				27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */,
+			);
+			path = Offers;
+			sourceTree = "<group>";
+		};
 		277630B41FDD897B0048AC60 = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				277630C01FDD897B0048AC60 /* AppDelegate.swift */,
-				277630C21FDD897B0048AC60 /* OffersViewController.swift */,
+				27582A531FDD92F2000155D5 /* Offers */,
 				277630C71FDD897B0048AC60 /* Assets.xcassets */,
 				277630C91FDD897B0048AC60 /* LaunchScreen.storyboard */,
 				277630CC1FDD897B0048AC60 /* Info.plist */,
@@ -256,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				277630C31FDD897B0048AC60 /* OffersViewController.swift in Sources */,
+				27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */,
 				277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
