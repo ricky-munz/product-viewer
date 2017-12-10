@@ -40,7 +40,14 @@ class OfferCollectionViewCell: UICollectionViewCell {
     let currentValueLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .green
-        label.text = "Current Value Label"
+        
+        if let font = UIFont(name: "AvenirNext-DemiBold", size: 12) {
+            let attributes: [NSAttributedStringKey : Any] = [
+                .foregroundColor: UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0),
+                .font: font]
+            label.attributedText = NSAttributedString(string: "Current Value Label", attributes: attributes)
+        }
+        
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -49,7 +56,14 @@ class OfferCollectionViewCell: UICollectionViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .red
-        label.text = "name label"
+        
+        if let font = UIFont(name: "AvenirNext-Regular", size: 11) {
+            let attributes: [NSAttributedStringKey : Any] = [
+                .foregroundColor: UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0),
+                .font: font]
+            label.attributedText = NSAttributedString(string: "Name Label", attributes: attributes)
+        }
+        
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
