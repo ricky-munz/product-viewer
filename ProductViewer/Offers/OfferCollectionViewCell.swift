@@ -19,6 +19,8 @@ class OfferCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
     let testLabel: UILabel = {
         let label = UILabel()
         label.text = "test label"
