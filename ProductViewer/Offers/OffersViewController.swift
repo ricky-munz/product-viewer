@@ -11,48 +11,50 @@ import UIKit
 class OffersViewController: UICollectionViewController {
 
     let cellId = "cell"
+    var offers = [Offer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = UIColor.white
         
-//        collectionView?.contentInset = UIEdgeInsets(top: 24, left: 12, bottom: 0, right: 12)
-        
-        
+        for _ in 0..<8 {
+            offers.append(Offer(id: 110579,
+                                url: "https://product-images.ibotta.com/offer/dUxYcQPeq391-DiywFZF8g-normal.png",
+                                name: "Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges",
+                                description: "Any variety - 2 ct. pack or larger",
+                                terms: "Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges for any variety, 2 ct. pack or larger.",
+                                currentValue: "$0.75 Cash Back"))
+        }
         collectionView?.register(OfferCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
     
     //MARK: - Collection View Data Source Methods
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return offers.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? OfferCollectionViewCell else {
+            fatalError("Failed to dequeue OfferCollectionViewCell.")
+        }
+        
+        if let previousValueLabel = cell.currentValueLabel.attributedText {
+            let newString = NSMutableAttributedString(attributedString: previousValueLabel)
+            newString.mutableString.setString(offers[indexPath.row].currentValue)
+            cell.currentValueLabel.attributedText = newString
+        }
+        if let previousNameLabel = cell.nameLabel.attributedText {
+            let newString = NSMutableAttributedString(attributedString: previousNameLabel)
+            newString.mutableString.setString(offers[indexPath.row].name)
+            cell.nameLabel.attributedText = newString
+        }
+        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
     }
-    
-    //MARK: - Collection View Delegate Flow Layout Methods
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        print(collectionView.bounds.width/2)
-//        return CGSize(width: collectionView.bounds.width/2.0, height: 100)
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 8
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 24
-//    }
 
 }

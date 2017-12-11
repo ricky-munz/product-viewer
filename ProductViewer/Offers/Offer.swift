@@ -9,19 +9,22 @@
 import Foundation
 
 class Offer {
-    var id: String
+    var id: Int
     var url: String
     var name: String
     var description: String
     var terms: String
     var currentValue: String
+    var isFavorited: Bool
     
-    init(id: String, url: String, name: String, description: String, terms: String, currentValue: String) {
+    init(id: Int, url: String, name: String, description: String, terms: String, currentValue: String) {
         self.id = id
         self.url = url
         self.name = name
         self.description = description
         self.terms = terms
         self.currentValue = currentValue
+        
+        self.isFavorited = false
     }
 }
