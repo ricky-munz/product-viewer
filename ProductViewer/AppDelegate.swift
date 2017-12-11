@@ -37,7 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         flowLayout.itemSize = CGSize(width: itemWidth/2, height: 150)
         let offersViewController = OffersViewController(collectionViewLayout: flowLayout)
         
+        UINavigationBar.appearance().barTintColor = .mainAppColor
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().isTranslucent = false
+        
         window?.rootViewController = UINavigationController(rootViewController: offersViewController)
+        
+        application.statusBarStyle = .lightContent
         
         return true
     }
