@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27387D9F1FDEE5AD00D5661C /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27387D9E1FDEE5AD00D5661C /* Offer.swift */; };
+		27387DA21FDEF62300D5661C /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27387DA11FDEF62300D5661C /* OfferDetailViewController.swift */; };
 		27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */; };
 		27582A571FDDF3C6000155D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27582A561FDDF3C6000155D5 /* Assets.xcassets */; };
 		277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C01FDD897B0048AC60 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		27387D9E1FDEE5AD00D5661C /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Offer.swift; path = ../../../productViewer/ProductViewer/Offers/Offer.swift; sourceTree = "<group>"; };
+		27387DA11FDEF62300D5661C /* OfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfferDetailViewController.swift; path = ../../../productViewer/ProductViewer/OfferDetail/OfferDetailViewController.swift; sourceTree = "<group>"; };
 		27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
 		27582A561FDDF3C6000155D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../productViewer/Assets.xcassets; sourceTree = "<group>"; };
 		277630BD1FDD897B0048AC60 /* ProductViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27387DA01FDEF60700D5661C /* OfferDetail */ = {
+			isa = PBXGroup;
+			children = (
+				27387DA11FDEF62300D5661C /* OfferDetailViewController.swift */,
+			);
+			path = OfferDetail;
+			sourceTree = "<group>";
+		};
 		27582A531FDD92F2000155D5 /* Offers */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		277630BF1FDD897B0048AC60 /* ProductViewer */ = {
 			isa = PBXGroup;
 			children = (
+				27387DA01FDEF60700D5661C /* OfferDetail */,
 				277630C01FDD897B0048AC60 /* AppDelegate.swift */,
 				27582A531FDD92F2000155D5 /* Offers */,
 				277630C91FDD897B0048AC60 /* LaunchScreen.storyboard */,
@@ -273,6 +284,7 @@
 				277630C31FDD897B0048AC60 /* OffersViewController.swift in Sources */,
 				27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */,
 				277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */,
+				27387DA21FDEF62300D5661C /* OfferDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

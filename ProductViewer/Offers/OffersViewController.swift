@@ -16,6 +16,8 @@ class OffersViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Offers"
+        
         collectionView?.backgroundColor = UIColor.white
         
         for _ in 0..<8 {
@@ -54,7 +56,8 @@ class OffersViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        let detailViewController = OfferDetailViewController()
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 
 }
