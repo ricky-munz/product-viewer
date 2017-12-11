@@ -28,9 +28,17 @@ class OfferCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    let favoriteView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .blue
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     let imageBackground: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
         view.layer.cornerRadius = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -43,7 +51,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
         
         if let font = UIFont(name: "AvenirNext-DemiBold", size: 12) {
             let attributes: [NSAttributedStringKey : Any] = [
-                .foregroundColor: UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0),
+                .foregroundColor: UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0),
                 .font: font]
             label.attributedText = NSAttributedString(string: "Current Value Label", attributes: attributes)
         }
@@ -77,6 +85,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
         addSubview(nameLabel)
         
         imageBackground.addSubview(imageView)
+        imageBackground.addSubview(favoriteView)
         
         //Horizontal
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageBackground]))
@@ -85,12 +94,14 @@ class OfferCollectionViewCell: UICollectionViewCell {
         
         //TODO: Move this into subclass
         imageBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-6-[v0]-6-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+        imageBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[v0(30)]-6-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": favoriteView]))
         
         //Vertical
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]-[v1]-[v2]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageBackground, "v1": currentValueLabel, "v2": nameLabel]))
         
         //TODO: Move this into subclass
         imageBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-6-[v0]-6-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+        imageBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(30)]-6-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": favoriteView]))
     }
     
 }
