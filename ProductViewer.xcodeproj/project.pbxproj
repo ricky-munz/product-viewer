@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27387D9F1FDEE5AD00D5661C /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27387D9E1FDEE5AD00D5661C /* Offer.swift */; };
 		27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */; };
 		27582A571FDDF3C6000155D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27582A561FDDF3C6000155D5 /* Assets.xcassets */; };
 		277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C01FDD897B0048AC60 /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27387D9E1FDEE5AD00D5661C /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Offer.swift; path = ../../../productViewer/ProductViewer/Offers/Offer.swift; sourceTree = "<group>"; };
 		27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
 		27582A561FDDF3C6000155D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../productViewer/Assets.xcassets; sourceTree = "<group>"; };
 		277630BD1FDD897B0048AC60 /* ProductViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 			children = (
 				277630C21FDD897B0048AC60 /* OffersViewController.swift */,
 				27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */,
+				27387D9E1FDEE5AD00D5661C /* Offer.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27387D9F1FDEE5AD00D5661C /* Offer.swift in Sources */,
 				277630C31FDD897B0048AC60 /* OffersViewController.swift in Sources */,
 				27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */,
 				277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */,
