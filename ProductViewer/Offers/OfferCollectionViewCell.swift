@@ -88,20 +88,20 @@ class OfferCollectionViewCell: UICollectionViewCell {
         imageBackground.addSubview(favoriteView)
         
         //Horizontal
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageBackground]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": currentValueLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
+        addConstraints(format: "H:|[v0]|", views: imageBackground)
+        addConstraints(format: "H:|[v0]|", views: currentValueLabel)
+        addConstraints(format: "H:|[v0]|", views: nameLabel)
         
         //TODO: Move this into subclass
-        imageBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-6-[v0]-6-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
-        imageBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[v0(30)]-6-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": favoriteView]))
+        imageBackground.addConstraints(format: "H:|-6-[v0]-6-|", views: imageView)
+        imageBackground.addConstraints(format: "H:[v0(30)]-6-|", views: favoriteView)
         
         //Vertical
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]-[v1]-[v2]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageBackground, "v1": currentValueLabel, "v2": nameLabel]))
+        addConstraints(format: "V:|[v0]-[v1]-[v2]|", views: imageBackground, currentValueLabel, nameLabel)
         
         //TODO: Move this into subclass
-        imageBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-6-[v0]-6-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
-        imageBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(30)]-6-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": favoriteView]))
+        imageBackground.addConstraints(format: "V:|-6-[v0]-6-|", views: imageView)
+        imageBackground.addConstraints(format: "V:[v0(30)]-6-|", views: favoriteView)
     }
     
 }

@@ -79,13 +79,13 @@ class OfferDetailViewController: UIViewController {
         view.addSubview(favoriteButton)
         view.addSubview(stackView)
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-32-[v0]-32-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-32-[v0]-32-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": favoriteButton]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-32-[v0]-32-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": stackView]))
+        view.addConstraints(format: "H:|-32-[v0]-32-|", views: imageView)
+        view.addConstraints(format: "H:|-32-[v0]-32-|", views: favoriteButton)
+        view.addConstraints(format: "H:|-32-[v0]-32-|", views: stackView)
         
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 0.75).isActive = true
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-[v1]-[v2]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView, "v1": favoriteButton, "v2": stackView]))
+        view.addConstraints(format: "V:|-16-[v0]-[v1]-[v2]", views: imageView, favoriteButton, stackView)
     }
 
 }
