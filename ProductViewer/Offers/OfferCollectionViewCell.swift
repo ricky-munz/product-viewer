@@ -29,32 +29,22 @@ class OfferCollectionViewCell: UICollectionViewCell {
     }()
     
     let currentValueLabel: UILabel = {
-        let label = UILabel()
-        
-        if let font = UIFont(name: "AvenirNext-DemiBold", size: 12) {
-            let attributes: [NSAttributedStringKey : Any] = [
-                .foregroundColor: UIColor.textGray,
-                .font: font]
-            label.attributedText = NSAttributedString(string: "Current Value Label", attributes: attributes)
-        }
+        let label = AttributedLabel()
+        label.setAttributedText(string: "Current Value Label", fontType: .demiBold, size: 12, color: .textGray)
         
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
     let nameLabel: UILabel = {
-        let label = UILabel()
-        
-        if let font = UIFont(name: "AvenirNext-Regular", size: 11) {
-            let attributes: [NSAttributedStringKey : Any] = [
-                .foregroundColor: UIColor.textGray,
-                .font: font]
-            label.attributedText = NSAttributedString(string: "Name Label", attributes: attributes)
-        }
+        let label = AttributedLabel()
+        label.setAttributedText(string: "Name Label", fontType: .regular, size: 11, color: .textGray)
         
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
