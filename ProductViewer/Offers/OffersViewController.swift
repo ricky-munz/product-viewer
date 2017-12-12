@@ -6,6 +6,7 @@
 //  Copyright © 2017 Richard S. Munz. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class OffersViewController: UICollectionViewController {
@@ -37,7 +38,25 @@ class OffersViewController: UICollectionViewController {
             fatalError("Failed to dequeue OfferCollectionViewCell.")
         }
         
-        cell.setView(offer: offers[indexPath.row])
+        let offer = offers[indexPath.row]
+
+        cell.setView(offer: offer)
+        cell.setView(image: #imageLiteral(resourceName: "DefaultImage"))
+        if let urlString = offer.url, let url = URL(string: urlString) {
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                
+                if let data = data {
+                    DispatchQueue.main.async {
+                        cell.setView(image: UIImage(data: data))
+                    }
+                }
+            }).resume()
+        }
+        
         
         return cell
     }

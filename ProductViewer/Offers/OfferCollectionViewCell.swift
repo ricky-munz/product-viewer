@@ -72,4 +72,8 @@ class OfferCollectionViewCell: UICollectionViewCell {
         imageBackground.setView(favorited: offer.isFavorited)
     }
     
+    func setView(image: UIImage?) {
+        imageBackground.imageView.image = image
+    }
+    
 }

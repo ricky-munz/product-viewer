@@ -24,6 +24,7 @@
 		277630E11FDD897C0048AC60 /* ProductViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630E01FDD897C0048AC60 /* ProductViewerUITests.swift */; };
 		2776C2431FE0559100F3873D /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776C2421FE0559100F3873D /* UILabelExtension.swift */; };
 		2776C2451FE05D4C00F3873D /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2776C2441FE05D4C00F3873D /* data.json */; };
+		2776C2481FE0765E00F3873D /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776C2471FE0765E00F3873D /* ScreenDimensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		277630E21FDD897C0048AC60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2776C2421FE0559100F3873D /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		2776C2441FE05D4C00F3873D /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		2776C2471FE0765E00F3873D /* ScreenDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDimensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		277630BF1FDD897B0048AC60 /* ProductViewer */ = {
 			isa = PBXGroup;
 			children = (
+				2776C2461FE0764300F3873D /* Globals */,
 				275BDD1A1FDF6C58002F662A /* Views */,
 				27387DA31FDF2A3B00D5661C /* Type Extensions */,
 				27387DA01FDEF60700D5661C /* Offer Detail */,
@@ -185,6 +188,14 @@
 				277630E21FDD897C0048AC60 /* Info.plist */,
 			);
 			path = ProductViewerUITests;
+			sourceTree = "<group>";
+		};
+		2776C2461FE0764300F3873D /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				2776C2471FE0765E00F3873D /* ScreenDimensions.swift */,
+			);
+			path = Globals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +340,7 @@
 				27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */,
 				27387DA51FDF2A5900D5661C /* ColorExtension.swift in Sources */,
 				27387DA71FDF380300D5661C /* UIViewExtension.swift in Sources */,
+				2776C2481FE0765E00F3873D /* ScreenDimensions.swift in Sources */,
 				275BDD1C1FDF6CC6002F662A /* FavoritableImageView.swift in Sources */,
 				277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */,
 				275BDD201FE0297B002F662A /* FavoriteButton.swift in Sources */,

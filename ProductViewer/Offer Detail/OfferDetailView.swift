@@ -89,7 +89,9 @@ class OfferDetailView: UIView {
         addConstraints(format: "H:|-32-[v0]-32-|", views: favoriteButton)
         addConstraints(format: "H:|-32-[v0]-32-|", views: stackView)
         
-        addConstraints(format: "V:|-16-[v0]-[v1]-[v2]", views: imageView, favoriteButton, stackView)
+        let screenWidthRatio = screenWidth * 0.6
+
+        addConstraints(format: "V:|-16-[v0(>=\(screenWidthRatio))]-[v1]-[v2]", views: imageView, favoriteButton, stackView)
     }
     
     func setView(favorited: Bool) {
