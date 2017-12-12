@@ -22,13 +22,12 @@ class OfferDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .cyan
-        imageView.image = UIImage(named: "ScrubDotsSample")
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    let imageView: UIView = {
+        let view = BorderedImageView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
     }()
     
     let favoriteView: UIImageView = {
@@ -105,18 +104,12 @@ class OfferDetailView: UIView {
     }
     
     func setupLayout() {
-        imageView.addSubview(favoriteView)
-        imageView.addConstraints(format: "H:[v0(30)]-6-|", views: favoriteView)
-        imageView.addConstraints(format: "V:[v0(30)]-6-|", views: favoriteView)
-        
         favoriteButton.setImage(favoriteImage, for: .normal)
         
         addConstraints(format: "H:|-32-[v0]-32-|", views: imageView)
         addConstraints(format: "H:|-32-[v0]-32-|", views: favoriteButton)
         addConstraints(format: "H:|-32-[v0]-32-|", views: stackView)
-        
-        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 0.75).isActive = true
-        
+                
         addConstraints(format: "V:|-16-[v0]-[v1]-[v2]", views: imageView, favoriteButton, stackView)
     }
 
