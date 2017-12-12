@@ -27,4 +27,8 @@ class Offer {
         
         self.isFavorited = false
     }
+    
+    func toggleFavorited() {
+        isFavorited = !isFavorited
+    }
 }

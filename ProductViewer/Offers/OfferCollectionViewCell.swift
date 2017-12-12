@@ -10,6 +10,8 @@ import UIKit
 
 class OfferCollectionViewCell: UICollectionViewCell {
     
+    var isFavorited = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
@@ -20,8 +22,8 @@ class OfferCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let imageBackground: UIView = {
-        let view = BorderedImageView()
+    let imageBackground: FavoritableImageView = {
+        let view = FavoritableImageView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -62,6 +64,22 @@ class OfferCollectionViewCell: UICollectionViewCell {
         
         //Vertical
         addConstraints(format: "V:|[v0]-[v1]-[v2]|", views: imageBackground, currentValueLabel, nameLabel)
+    }
+    
+    func setView(offer: Offer) {
+        set(text: offer.currentValue, label: currentValueLabel)
+        set(text: offer.name, label: nameLabel)
+        
+        imageBackground.setView(favorited: offer.isFavorited)
+    }
+    
+    //TODO: move this to UILabel extension
+    private func set(text: String, label: UILabel) {
+        if let previousValueLabel = label.attributedText {
+            let newString = NSMutableAttributedString(attributedString: previousValueLabel)
+            newString.mutableString.setString(text)
+            label.attributedText = newString
+        }
     }
     
 }

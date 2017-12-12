@@ -1,5 +1,5 @@
 //
-//  BorderedImageView.swift
+//  FavoritableImageView.swift
 //  ProductViewer
 //
 //  Created by Richard S. Munz on 12/11/17.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-class BorderedImageView: UIView {
+class FavoritableImageView: UIView {
 
+    private var isFavorited = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -53,8 +55,13 @@ class BorderedImageView: UIView {
         addConstraints(format: "V:[v0(30)]-6-|", views: favoriteView)
     }
     
-    func setFavoriteView(image: UIImage?) {
-        favoriteView.image = image
+    func setView(favorited: Bool) {
+        if favorited {
+            favoriteView.image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
+            
+        } else {
+            favoriteView.image = UIImage(named: "StarEmpty")?.withRenderingMode(.alwaysTemplate)
+        }
     }
     
 }

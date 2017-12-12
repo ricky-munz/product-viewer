@@ -9,7 +9,6 @@
 import UIKit
 
 class OfferDetailView: UIView {
-    var isFavorited = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,8 +23,8 @@ class OfferDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let imageView: BorderedImageView = {
-        let view = BorderedImageView()
+    let imageView: FavoritableImageView = {
+        let view = FavoritableImageView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -93,18 +92,17 @@ class OfferDetailView: UIView {
         addConstraints(format: "V:|-16-[v0]-[v1]-[v2]", views: imageView, favoriteButton, stackView)
     }
     
-    func updateState() {
-        isFavorited = !isFavorited
-        let image: UIImage?
+    func setView(favorited: Bool) {
+        imageView.setView(favorited: favorited)
+    }
+    
+    func setView(offer: Offer) {
+        nameLabel.text = offer.name
+        descriptionLabel.text = offer.description
+        termsLabel.text = offer.terms
+        valueLabel.text = offer.currentValue
         
-        if isFavorited {
-            image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
-            
-        } else {
-            image = UIImage(named: "StarEmpty")?.withRenderingMode(.alwaysTemplate)
-        }
-        
-        imageView.setFavoriteView(image: image)
+        setView(favorited: offer.isFavorited)
     }
 
 }

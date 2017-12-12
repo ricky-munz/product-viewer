@@ -31,6 +31,11 @@ class OffersViewController: UICollectionViewController {
         collectionView?.register(OfferCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+    }
+    
     //MARK: - Collection View Data Source Methods
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return offers.count
@@ -41,22 +46,13 @@ class OffersViewController: UICollectionViewController {
             fatalError("Failed to dequeue OfferCollectionViewCell.")
         }
         
-        if let previousValueLabel = cell.currentValueLabel.attributedText {
-            let newString = NSMutableAttributedString(attributedString: previousValueLabel)
-            newString.mutableString.setString(offers[indexPath.row].currentValue)
-            cell.currentValueLabel.attributedText = newString
-        }
-        if let previousNameLabel = cell.nameLabel.attributedText {
-            let newString = NSMutableAttributedString(attributedString: previousNameLabel)
-            newString.mutableString.setString(offers[indexPath.row].name)
-            cell.nameLabel.attributedText = newString
-        }
+        cell.setView(offer: offers[indexPath.row])
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = OfferDetailViewController()
+        let detailViewController = OfferDetailViewController(offer: offers[indexPath.row])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 
