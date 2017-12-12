@@ -22,6 +22,8 @@
 		277630CB1FDD897B0048AC60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277630C91FDD897B0048AC60 /* LaunchScreen.storyboard */; };
 		277630D61FDD897C0048AC60 /* ProductViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630D51FDD897C0048AC60 /* ProductViewerTests.swift */; };
 		277630E11FDD897C0048AC60 /* ProductViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630E01FDD897C0048AC60 /* ProductViewerUITests.swift */; };
+		2776C2431FE0559100F3873D /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776C2421FE0559100F3873D /* UILabelExtension.swift */; };
+		2776C2451FE05D4C00F3873D /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2776C2441FE05D4C00F3873D /* data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		277630DC1FDD897C0048AC60 /* ProductViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		277630E01FDD897C0048AC60 /* ProductViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewerUITests.swift; sourceTree = "<group>"; };
 		277630E21FDD897C0048AC60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2776C2421FE0559100F3873D /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		2776C2441FE05D4C00F3873D /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 			children = (
 				27387DA41FDF2A5900D5661C /* ColorExtension.swift */,
 				27387DA61FDF380300D5661C /* UIViewExtension.swift */,
+				2776C2421FE0559100F3873D /* UILabelExtension.swift */,
 			);
 			path = "Type Extensions";
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				277630C91FDD897B0048AC60 /* LaunchScreen.storyboard */,
 				277630CC1FDD897B0048AC60 /* Info.plist */,
 				27582A561FDDF3C6000155D5 /* Assets.xcassets */,
+				2776C2441FE05D4C00F3873D /* data.json */,
 			);
 			path = ProductViewer;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27582A571FDDF3C6000155D5 /* Assets.xcassets in Resources */,
+				2776C2451FE05D4C00F3873D /* data.json in Resources */,
 				277630CB1FDD897B0048AC60 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +325,7 @@
 				275BDD191FDF682B002F662A /* OfferDetailView.swift in Sources */,
 				27387D9F1FDEE5AD00D5661C /* Offer.swift in Sources */,
 				277630C31FDD897B0048AC60 /* OffersViewController.swift in Sources */,
+				2776C2431FE0559100F3873D /* UILabelExtension.swift in Sources */,
 				27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */,
 				27387DA51FDF2A5900D5661C /* ColorExtension.swift in Sources */,
 				27387DA71FDF380300D5661C /* UIViewExtension.swift in Sources */,

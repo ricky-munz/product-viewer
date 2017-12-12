@@ -11,7 +11,7 @@ import UIKit
 class OffersViewController: UICollectionViewController {
 
     let cellId = "cell"
-    var offers = [Offer]()
+    var offers = Offer.loadOffersFromJson()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +19,6 @@ class OffersViewController: UICollectionViewController {
         title = "Offers"
         
         collectionView?.backgroundColor = UIColor.white
-        
-        for _ in 0..<8 {
-            offers.append(Offer(id: 110579,
-                                url: "https://product-images.ibotta.com/offer/dUxYcQPeq391-DiywFZF8g-normal.png",
-                                name: "Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges",
-                                description: "Any variety - 2 ct. pack or larger",
-                                terms: "Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges for any variety, 2 ct. pack or larger.",
-                                currentValue: "$0.75 Cash Back"))
-        }
         collectionView?.register(OfferCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
     

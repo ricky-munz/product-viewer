@@ -30,7 +30,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    let currentValueLabel: UILabel = {
+    let valueLabel: UILabel = {
         let label = AttributedLabel()
         label.setAttributedText(string: "Current Value Label", fontType: .demiBold, size: 12, color: .textGray)
         
@@ -52,34 +52,24 @@ class OfferCollectionViewCell: UICollectionViewCell {
     
     func addSubviews() {
         addSubview(imageBackground)
-        addSubview(currentValueLabel)
+        addSubview(valueLabel)
         addSubview(nameLabel)
     }
     
     func setupViews() {
         //Horizontal
         addConstraints(format: "H:|[v0]|", views: imageBackground)
-        addConstraints(format: "H:|[v0]|", views: currentValueLabel)
+        addConstraints(format: "H:|[v0]|", views: valueLabel)
         addConstraints(format: "H:|[v0]|", views: nameLabel)
         
         //Vertical
-        addConstraints(format: "V:|[v0]-[v1]-[v2]|", views: imageBackground, currentValueLabel, nameLabel)
+        addConstraints(format: "V:|[v0]-[v1]-[v2]|", views: imageBackground, valueLabel, nameLabel)
     }
     
     func setView(offer: Offer) {
-        set(text: offer.currentValue, label: currentValueLabel)
-        set(text: offer.name, label: nameLabel)
-        
+        valueLabel.setAttributedText(string: offer.value)
+        nameLabel.setAttributedText(string: offer.name)
         imageBackground.setView(favorited: offer.isFavorited)
-    }
-    
-    //TODO: move this to UILabel extension
-    private func set(text: String, label: UILabel) {
-        if let previousValueLabel = label.attributedText {
-            let newString = NSMutableAttributedString(attributedString: previousValueLabel)
-            newString.mutableString.setString(text)
-            label.attributedText = newString
-        }
     }
     
 }

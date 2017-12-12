@@ -100,7 +100,7 @@ class OfferDetailView: UIView {
         nameLabel.text = offer.name
         descriptionLabel.text = offer.description
         termsLabel.text = offer.terms
-        valueLabel.text = offer.currentValue
+        valueLabel.text = offer.value
         
         setView(favorited: offer.isFavorited)
     }
