@@ -14,6 +14,7 @@
 		27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */; };
 		27582A571FDDF3C6000155D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27582A561FDDF3C6000155D5 /* Assets.xcassets */; };
 		275BDD191FDF682B002F662A /* OfferDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BDD181FDF682B002F662A /* OfferDetailView.swift */; };
+		275BDD1C1FDF6CC6002F662A /* BorderedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BDD1B1FDF6CC6002F662A /* BorderedImageView.swift */; };
 		277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C01FDD897B0048AC60 /* AppDelegate.swift */; };
 		277630C31FDD897B0048AC60 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C21FDD897B0048AC60 /* OffersViewController.swift */; };
 		277630CB1FDD897B0048AC60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277630C91FDD897B0048AC60 /* LaunchScreen.storyboard */; };
@@ -46,6 +47,7 @@
 		27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
 		27582A561FDDF3C6000155D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../productViewer/Assets.xcassets; sourceTree = "<group>"; };
 		275BDD181FDF682B002F662A /* OfferDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailView.swift; sourceTree = "<group>"; };
+		275BDD1B1FDF6CC6002F662A /* BorderedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedImageView.swift; sourceTree = "<group>"; };
 		277630BD1FDD897B0048AC60 /* ProductViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277630C01FDD897B0048AC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277630C21FDD897B0048AC60 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 			path = Offers;
 			sourceTree = "<group>";
 		};
+		275BDD1A1FDF6C58002F662A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				275BDD1B1FDF6CC6002F662A /* BorderedImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		277630B41FDD897B0048AC60 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 		277630BF1FDD897B0048AC60 /* ProductViewer */ = {
 			isa = PBXGroup;
 			children = (
+				275BDD1A1FDF6C58002F662A /* Views */,
 				27387DA31FDF2A3B00D5661C /* Type Extensions */,
 				27387DA01FDEF60700D5661C /* Offer Detail */,
 				27582A531FDD92F2000155D5 /* Offers */,
@@ -303,6 +314,7 @@
 				27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */,
 				27387DA51FDF2A5900D5661C /* ColorExtension.swift in Sources */,
 				27387DA71FDF380300D5661C /* UIViewExtension.swift in Sources */,
+				275BDD1C1FDF6CC6002F662A /* BorderedImageView.swift in Sources */,
 				277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */,
 				27387DA21FDEF62300D5661C /* OfferDetailViewController.swift in Sources */,
 			);
