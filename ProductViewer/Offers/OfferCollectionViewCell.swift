@@ -34,6 +34,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
         let label = AttributedLabel()
         label.setAttributedText(string: "Current Value Label", fontType: .demiBold, size: 12, color: .textGray)
         
+        label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -44,6 +45,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
         let label = AttributedLabel()
         label.setAttributedText(string: "Name Label", fontType: .regular, size: 11, color: .textGray)
         
+        label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         

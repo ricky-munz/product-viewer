@@ -13,6 +13,7 @@ class OffersViewController: UICollectionViewController {
 
     let cellId = "cell"
     var offers = Offer.loadOffersFromJson()
+    var offerImages = NSCache<NSString, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,20 +42,32 @@ class OffersViewController: UICollectionViewController {
         let offer = offers[indexPath.row]
 
         cell.setView(offer: offer)
-        cell.setView(image: #imageLiteral(resourceName: "DefaultImage"))
+        cell.setView(image: UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate))
+        
         if let urlString = offer.url, let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                guard error == nil else {
-                    print(error!)
-                    return
-                }
+            if let image = offerImages.object(forKey: urlString as NSString) {
+                cell.setView(image: image)
                 
-                if let data = data {
-                    DispatchQueue.main.async {
-                        cell.setView(image: UIImage(data: data))
+            } else {
+                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                    guard error == nil else {
+                        print(error!)
+                        return
                     }
-                }
-            }).resume()
+                    
+                    if let data = data, let image = UIImage(data: data) {
+                        self.offerImages.setObject(image, forKey: url.absoluteString as NSString)
+                        
+                        DispatchQueue.main.async {
+                            if collectionView.indexPathsForVisibleItems.contains(indexPath) {
+                                cell.setView(image: image)
+                            }
+                        }
+                    }
+                }).resume()
+            }
+        } else {
+            cell.setView(image: #imageLiteral(resourceName: "Unavailable"))
         }
         
         
