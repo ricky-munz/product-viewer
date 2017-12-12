@@ -34,7 +34,7 @@ class BorderedImageView: UIView {
     
     let favoriteView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
+        imageView.image = UIImage(named: "StarEmpty")?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .mainAppColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -51,6 +51,10 @@ class BorderedImageView: UIView {
         
         addConstraints(format: "H:[v0(30)]-6-|", views: favoriteView)
         addConstraints(format: "V:[v0(30)]-6-|", views: favoriteView)
+    }
+    
+    func setFavoriteView(image: UIImage?) {
+        favoriteView.image = image
     }
     
 }

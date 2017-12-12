@@ -9,6 +9,8 @@
 import UIKit
 
 class OfferDetailView: UIView {
+    var isFavorited = false
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -22,7 +24,7 @@ class OfferDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let imageView: UIView = {
+    let imageView: BorderedImageView = {
         let view = BorderedImageView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -30,28 +32,8 @@ class OfferDetailView: UIView {
         return view
     }()
     
-    let favoriteView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .mainAppColor
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    let favoriteImage: UIImage? = {
-        let image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
-        return image
-    }()
-    
     let favoriteButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Favorite", for: .normal)
-        button.backgroundColor = .mainAppColor
-        button.tintColor = .white
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 8)
-        button.layer.cornerRadius = 5
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = FavoriteButton()
         return button
     }()
     
@@ -104,13 +86,25 @@ class OfferDetailView: UIView {
     }
     
     func setupLayout() {
-        favoriteButton.setImage(favoriteImage, for: .normal)
-        
         addConstraints(format: "H:|-32-[v0]-32-|", views: imageView)
         addConstraints(format: "H:|-32-[v0]-32-|", views: favoriteButton)
         addConstraints(format: "H:|-32-[v0]-32-|", views: stackView)
-                
+        
         addConstraints(format: "V:|-16-[v0]-[v1]-[v2]", views: imageView, favoriteButton, stackView)
+    }
+    
+    func updateState() {
+        isFavorited = !isFavorited
+        let image: UIImage?
+        
+        if isFavorited {
+            image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
+            
+        } else {
+            image = UIImage(named: "StarEmpty")?.withRenderingMode(.alwaysTemplate)
+        }
+        
+        imageView.setFavoriteView(image: image)
     }
 
 }
