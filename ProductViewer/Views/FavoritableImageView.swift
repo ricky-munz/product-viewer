@@ -28,7 +28,8 @@ class FavoritableImageView: UIView {
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "ScrubDotsSample")
+        imageView.image = UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .darkGray
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
