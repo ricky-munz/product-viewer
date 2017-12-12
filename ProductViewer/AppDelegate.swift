@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         flowLayout.minimumInteritemSpacing = CGFloat(itemHorizontalPadding)
 
         flowLayout.sectionInset = UIEdgeInsets(top: CGFloat(topCollectionViewMargin), left: CGFloat(leftCollectionViewMargin), bottom: 0, right: CGFloat(rightCollectionViewMargin))
-        flowLayout.itemSize = CGSize(width: itemWidth/2, height: 150)
+        flowLayout.itemSize = CGSize(width: itemWidth/2, height: itemWidth/2)
         let offersViewController = OffersViewController(collectionViewLayout: flowLayout)
         
         UINavigationBar.appearance().barTintColor = .mainAppColor

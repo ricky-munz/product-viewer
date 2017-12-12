@@ -29,10 +29,26 @@ class OfferDetailViewController: UIViewController {
         return imageView
     }()
     
+    let favoriteView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .mainAppColor
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    let favoriteImage: UIImage? = {
+        let image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
+        return image
+    }()
+    
     let favoriteButton: UIButton = {
         let button = UIButton()
         button.setTitle("Favorite", for: .normal)
         button.backgroundColor = .mainAppColor
+        button.tintColor = .white
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 8, right: 8)
         button.layer.cornerRadius = 5
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -78,6 +94,12 @@ class OfferDetailViewController: UIViewController {
         view.addSubview(imageView)
         view.addSubview(favoriteButton)
         view.addSubview(stackView)
+        
+        imageView.addSubview(favoriteView)
+        imageView.addConstraints(format: "H:[v0(30)]-6-|", views: favoriteView)
+        imageView.addConstraints(format: "V:[v0(30)]-6-|", views: favoriteView)
+        
+        favoriteButton.setImage(favoriteImage, for: .normal)
         
         view.addConstraints(format: "H:|-32-[v0]-32-|", views: imageView)
         view.addConstraints(format: "H:|-32-[v0]-32-|", views: favoriteButton)

@@ -21,7 +21,6 @@ class OfferCollectionViewCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .cyan
         imageView.image = UIImage(named: "ScrubDotsSample")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,15 +30,15 @@ class OfferCollectionViewCell: UICollectionViewCell {
     let favoriteView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .blue
+        imageView.tintColor = .mainAppColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     let imageBackground: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
         view.layer.cornerRadius = 5
+        view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -47,7 +46,6 @@ class OfferCollectionViewCell: UICollectionViewCell {
     
     let currentValueLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .green
         
         if let font = UIFont(name: "AvenirNext-DemiBold", size: 12) {
             let attributes: [NSAttributedStringKey : Any] = [
@@ -63,7 +61,6 @@ class OfferCollectionViewCell: UICollectionViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .red
         
         if let font = UIFont(name: "AvenirNext-Regular", size: 11) {
             let attributes: [NSAttributedStringKey : Any] = [
@@ -78,8 +75,6 @@ class OfferCollectionViewCell: UICollectionViewCell {
     }()
     
     func setupViews() {
-        backgroundColor = UIColor.blue
-        
         addSubview(imageBackground)
         addSubview(currentValueLabel)
         addSubview(nameLabel)
