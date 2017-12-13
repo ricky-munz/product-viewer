@@ -64,7 +64,7 @@ class FavoritableImageView: UIView {
         addConstraints(format: "V:[v0(30)]-6-|", views: favoriteView)
     }
     
-    func setView(favorited: Bool) {
+    func setFavoriteIndicator(favorited: Bool) {
         if favorited {
             favoriteView.image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
             

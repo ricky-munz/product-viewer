@@ -23,7 +23,7 @@ class OfferDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let imageView: FavoritableImageView = {
+    let favoritableImageView: FavoritableImageView = {
         let view = FavoritableImageView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -79,32 +79,34 @@ class OfferDetailView: UIView {
         stackView.addArrangedSubview(termsLabel)
         stackView.addArrangedSubview(valueLabel)
         
-        addSubview(imageView)
+        addSubview(favoritableImageView)
         addSubview(favoriteButton)
         addSubview(stackView)
     }
     
     func setupLayout() {
-        addConstraints(format: "H:|-32-[v0]-32-|", views: imageView)
+        addConstraints(format: "H:|-32-[v0]-32-|", views: favoritableImageView)
         addConstraints(format: "H:|-32-[v0]-32-|", views: favoriteButton)
         addConstraints(format: "H:|-32-[v0]-32-|", views: stackView)
         
         let screenWidthRatio = screenWidth * 0.6
 
-        addConstraints(format: "V:|-16-[v0(>=\(screenWidthRatio))]-[v1]-[v2]", views: imageView, favoriteButton, stackView)
+        addConstraints(format: "V:|-16-[v0(>=\(screenWidthRatio))]-[v1]-[v2]", views: favoritableImageView, favoriteButton, stackView)
     }
     
-    func setView(favorited: Bool) {
-        imageView.setView(favorited: favorited)
+    func setFavoriteIndicator(favorited: Bool) {
+        favoritableImageView.setFavoriteIndicator(favorited: favorited)
     }
     
     func setView(offer: Offer) {
+        favoritableImageView.setBackgroundImage(url: offer.url)
+        
         nameLabel.text = offer.name
         descriptionLabel.text = offer.description
         termsLabel.text = offer.terms
         valueLabel.text = offer.value
         
-        setView(favorited: offer.isFavorited)
+        setFavoriteIndicator(favorited: offer.isFavorited)
     }
 
 }

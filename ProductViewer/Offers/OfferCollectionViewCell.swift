@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Kingfisher
 
 class OfferCollectionViewCell: UICollectionViewCell {
     
@@ -72,7 +71,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
     func setView(offer: Offer) {
         valueLabel.setAttributedText(string: offer.value)
         nameLabel.setAttributedText(string: offer.name)
-        favoritableImageView.setView(favorited: offer.isFavorited)
+        favoritableImageView.setFavoriteIndicator(favorited: offer.isFavorited)
         favoritableImageView.setBackgroundImage(url: offer.url)
     }
     

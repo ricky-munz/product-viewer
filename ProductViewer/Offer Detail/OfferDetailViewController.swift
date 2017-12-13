@@ -40,7 +40,7 @@ class OfferDetailViewController: UIViewController {
     @objc func favoriteButtonTapped() {
         guard let view = view as? OfferDetailView else { return }
         offer.toggleFavorited()
-        view.setView(favorited: offer.isFavorited)
+        view.setFavoriteIndicator(favorited: offer.isFavorited)
     }
     
 }
