@@ -26,6 +26,14 @@ class FavoritableImageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let defaultImage: UIImage? = {
+       return UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate)
+    }()
+    
+    let unavailableImage: UIImage? = {
+        return UIImage(named: "Unavailable")?.withRenderingMode(.alwaysTemplate)
+    }()
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate)
@@ -43,12 +51,12 @@ class FavoritableImageView: UIView {
         return imageView
     }()
     
-    func addSubviews() {
+    private func addSubviews() {
         addSubview(imageView)
         addSubview(favoriteView)
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         addConstraints(format: "H:|-6-[v0]-6-|", views: imageView)
         addConstraints(format: "V:|-6-[v0]-6-|", views: imageView)
         
@@ -63,6 +71,20 @@ class FavoritableImageView: UIView {
         } else {
             favoriteView.image = UIImage(named: "StarEmpty")?.withRenderingMode(.alwaysTemplate)
         }
+    }
+    
+    func setBackgroundImage(url urlString: String?) {
+        if let urlString = urlString {
+            let url = URL(string: urlString)
+            imageView.kf.setImage(with: url, placeholder: defaultImage, options: [.transition(.fade(0.2))])
+            
+        } else {
+            imageView.image = unavailableImage
+        }
+    }
+    
+    func cancelImageFetch() {
+        imageView.kf.cancelDownloadTask()
     }
     
 }

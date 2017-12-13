@@ -53,13 +53,13 @@ class OfferCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    func addSubviews() {
+    private func addSubviews() {
         addSubview(favoritableImageView)
         addSubview(valueLabel)
         addSubview(nameLabel)
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         //Horizontal
         addConstraints(format: "H:|[v0]|", views: favoritableImageView)
         addConstraints(format: "H:|[v0]|", views: valueLabel)
@@ -73,30 +73,11 @@ class OfferCollectionViewCell: UICollectionViewCell {
         valueLabel.setAttributedText(string: offer.value)
         nameLabel.setAttributedText(string: offer.name)
         favoritableImageView.setView(favorited: offer.isFavorited)
-        setBackgroundImage(url: offer.url)
+        favoritableImageView.setBackgroundImage(url: offer.url)
     }
     
-    private func set(backgroundImage: UIImage?) {
-        favoritableImageView.imageView.image = backgroundImage
-    }
-    
-    private func setBackgroundViewDefault() {
-        set(backgroundImage: UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate))
-    }
-    
-    private func setBackgroundViewUnavailable() {
-        set(backgroundImage: UIImage(named: "Unavailable")?.withRenderingMode(.alwaysTemplate))
-    }
-    
-    private func setBackgroundImage(url urlString: String?) {
-        if let urlString = urlString {
-            let url = URL(string: urlString)
-            let image = UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate)
-            //TODO: favoritableImageView.setImage(url: url, placeholder: image)
-            favoritableImageView.imageView.kf.setImage(with: url, placeholder: image, options: [.transition(.fade(0.2))])
-        } else {
-            setBackgroundViewUnavailable()
-        }
+    func cancelImageFetch() {
+        favoritableImageView.cancelImageFetch()
     }
     
 }

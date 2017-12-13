@@ -10,14 +10,12 @@ import Foundation
 import UIKit
 import Kingfisher
 
-var offerImageCache = NSCache<NSString, UIImage>()
-
 class OffersViewController: UICollectionViewController {
 
     let cellId = "cell"
     var offers = Offer.loadOffersFromJson()
-    var operations = OperationQueue()
     
+    //MARK: - View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +23,7 @@ class OffersViewController: UICollectionViewController {
         
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(OfferCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,9 +52,9 @@ class OffersViewController: UICollectionViewController {
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//    cell.imageView.kf.cancelDownloadTask()
-
-//    }
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? OfferCollectionViewCell else { return }
+        cell.cancelImageFetch()
+    }
     
 }
