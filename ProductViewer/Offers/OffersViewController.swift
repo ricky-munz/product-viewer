@@ -8,12 +8,15 @@
 
 import Foundation
 import UIKit
+import Kingfisher
+
+var offerImageCache = NSCache<NSString, UIImage>()
 
 class OffersViewController: UICollectionViewController {
 
     let cellId = "cell"
     var offers = Offer.loadOffersFromJson()
-    var offerImages = NSCache<NSString, UIImage>()
+    var operations = OperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,36 +43,7 @@ class OffersViewController: UICollectionViewController {
         }
         
         let offer = offers[indexPath.row]
-
         cell.setView(offer: offer)
-        cell.setView(image: UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate))
-        
-        if let urlString = offer.url, let url = URL(string: urlString) {
-            if let image = offerImages.object(forKey: urlString as NSString) {
-                cell.setView(image: image)
-                
-            } else {
-                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                    guard error == nil else {
-                        print(error!)
-                        return
-                    }
-                    
-                    if let data = data, let image = UIImage(data: data) {
-                        self.offerImages.setObject(image, forKey: url.absoluteString as NSString)
-                        
-                        DispatchQueue.main.async {
-                            if collectionView.indexPathsForVisibleItems.contains(indexPath) {
-                                cell.setView(image: image)
-                            }
-                        }
-                    }
-                }).resume()
-            }
-        } else {
-            cell.setView(image: #imageLiteral(resourceName: "Unavailable"))
-        }
-        
         
         return cell
     }
@@ -78,5 +52,10 @@ class OffersViewController: UICollectionViewController {
         let detailViewController = OfferDetailViewController(offer: offers[indexPath.row])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
+    
+//    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//    cell.imageView.kf.cancelDownloadTask()
 
+//    }
+    
 }
