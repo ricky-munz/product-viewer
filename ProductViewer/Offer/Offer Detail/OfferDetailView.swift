@@ -47,35 +47,39 @@ class OfferDetailView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.spacing = 8
+        stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Name"
+        label.setAttributedText(string: "Name", fontType: .bold, size: 17, color: .primaryTextColor)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Description"
+        label.setAttributedText(string: "Description", fontType: .medium, size: 15, color: .primaryTextColor)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let termsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Terms"
+        label.setAttributedText(string: "Terms", fontType: .regular, size: 13, color: .primaryTextColor)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let valueLabel: UILabel = {
         let label = UILabel()
-        label.text = "Value"
+        label.setAttributedText(string: "Value", fontType: .demiBold, size: 15, color: .primaryTextColor)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -111,10 +115,10 @@ class OfferDetailView: UIView {
     func set(offer: Offer) {
         favoritableImageView.setBackgroundImage(url: offer.url)
         
-        nameLabel.text = offer.name
-        descriptionLabel.text = offer.description
-        termsLabel.text = offer.terms
-        valueLabel.text = offer.value
+        nameLabel.setAttributedText(string: offer.name)
+        descriptionLabel.setAttributedText(string: offer.description)
+        termsLabel.setAttributedText(string: offer.terms)
+        valueLabel.setAttributedText(string: offer.value)
         
         setFavoriteIndicator(favorited: offer.isFavorited)
     }
