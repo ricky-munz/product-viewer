@@ -31,7 +31,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
     }()
     
     let valueLabel: UILabel = {
-        let label = AttributedLabel()
+        let label = UILabel()
         label.setAttributedText(string: "Current Value Label", fontType: .demiBold, size: 12, color: .textGray)
         
         label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
@@ -42,7 +42,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
     }()
     
     let nameLabel: UILabel = {
-        let label = AttributedLabel()
+        let label = UILabel()
         label.setAttributedText(string: "Name Label", fontType: .regular, size: 11, color: .textGray)
         
         label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)

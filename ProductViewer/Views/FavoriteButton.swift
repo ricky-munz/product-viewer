@@ -13,7 +13,7 @@ class FavoriteButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setTitle("Favorite", for: .normal)
-        backgroundColor = .mainAppColor
+        backgroundColor = .mainThemeColor
         tintColor = .white
         let image = #imageLiteral(resourceName: "StarFilled").withRenderingMode(.alwaysTemplate)
         setImage(image, for: .normal)

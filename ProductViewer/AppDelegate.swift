@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let flowLayout = OfferCollectionViewFlowLayout()
         let offersViewController = OffersViewController(collectionViewLayout: flowLayout)
         
-        UINavigationBar.appearance().barTintColor = .mainAppColor
+        UINavigationBar.appearance().barTintColor = .mainThemeColor
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         UINavigationBar.appearance().isTranslucent = false

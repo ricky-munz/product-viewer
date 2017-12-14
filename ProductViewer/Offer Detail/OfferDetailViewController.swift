@@ -27,12 +27,11 @@ class OfferDetailViewController: UIViewController {
         title = "Offer Detail"
         edgesForExtendedLayout = []
         favoriteButton?.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
-        
     }
     
     override func loadView() {
         let detailView = OfferDetailView(frame: .zero)
-        detailView.setView(offer: offer)
+        detailView.set(offer: offer)
         view = detailView
         favoriteButton = detailView.favoriteButton
     }

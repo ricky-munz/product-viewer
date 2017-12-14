@@ -101,12 +101,8 @@ class OfferDetailView: UIView {
                        metrics: verticalMetrics,
                        views: favoritableImageView, favoriteButton, stackView)
     }
-    
-    func setFavoriteIndicator(favorited: Bool) {
-        favoritableImageView.setFavoriteIndicator(favorited: favorited)
-    }
-    
-    func setView(offer: Offer) {
+
+    func set(offer: Offer) {
         favoritableImageView.setBackgroundImage(url: offer.url)
         
         nameLabel.text = offer.name
@@ -115,6 +111,10 @@ class OfferDetailView: UIView {
         valueLabel.text = offer.value
         
         setFavoriteIndicator(favorited: offer.isFavorited)
+    }
+    
+    func setFavoriteIndicator(favorited: Bool) {
+        favoritableImageView.setFavoriteIndicator(favorited: favorited)
     }
 
 }

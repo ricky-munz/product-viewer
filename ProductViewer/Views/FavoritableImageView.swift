@@ -50,7 +50,7 @@ class FavoritableImageView: UIView {
     let favoriteView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "StarEmpty").withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .mainAppColor
+        imageView.tintColor = .mainThemeColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

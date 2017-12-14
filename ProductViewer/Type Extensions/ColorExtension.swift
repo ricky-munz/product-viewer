@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static var mainAppColor: UIColor = {
+    static var mainThemeColor: UIColor = {
        return UIColor(red:0.27, green:0.48, blue:0.62, alpha:1.0)
     }()
     
