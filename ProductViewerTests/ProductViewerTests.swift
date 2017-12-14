@@ -11,47 +11,87 @@ import XCTest
 
 class ProductViewerTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    struct OfferJson {
+        let id: String
+        let url: String?
+        let name: String
+        let description: String
+        let terms: String
+        let currentValue: String
+        
+        var dictionary: [String: Any?] {
+            return [
+                "id": id,
+                "url": url,
+                "name": name,
+                "description": description,
+                "terms": terms,
+                "current_value": currentValue
+            ]
+        }
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    private let offerJsonStruct1 = OfferJson(id: "110579",
+                                             url: "https://product-images.ibotta.com/offer/dUxYcQPeq391-DiywFZF8g-normal.png",
+                                             name: "Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges",
+                                             description: "Any variety - 2 ct. pack or larger",
+                                             terms: "Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges for any variety, 2 ct. pack or larger.",
+                                             currentValue: "$0.75 Cash Back")
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    private let offerJsonStruct2 = OfferJson(id: "120331",
+                                             url: nil,
+                                             name: "Carapelli® Olive Oil",
+                                             description: "Any variety - Any size",
+                                             terms: "Rebate on Carapelli® Olive Oil for any variety, any size.",
+                                             currentValue: "$1.50 Cash Back")
     
     func testOfferInitJson() {
-        let id = "110579"
-        let offerDict: [String: Any?] = [
-            "id": id,
-            "url":"https://product-images.ibotta.com/offer/dUxYcQPeq391-DiywFZF8g-normal.png",
-            "name":"Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges",
-            "description":"Any variety - 2 ct. pack or larger",
-            "terms":"Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges for any variety, 2 ct. pack or larger.",
-            "current_value":"$0.75 Cash Back"
-        ]
         var offer: Offer
         
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: offerDict, options: .prettyPrinted)
-            print(jsonData)
-            offer = try JSONDecoder().decode(Offer.self, from: jsonData)
+            offer = try encodeDecode(jsonObject: offerJsonStruct1.dictionary, type: Offer.self)
             
-            XCTAssertEqual(id, offer.id)
+            XCTAssertEqual(offerJsonStruct1.id, offer.id)
             
         } catch {
-            XCTFail("Failed to decode JSON data using Offer protocol.")
+            XCTFail("Failed to decode JSON data using \(Offer.self).")
+        }
+    }
+    
+    func testOfferInitJsonList() {
+        let offerJsonList = [offerJsonStruct1.dictionary, offerJsonStruct2.dictionary]
+        var offers: [Offer]
+        
+        do {
+            offers = try encodeDecode(jsonObject: offerJsonList, type: [Offer].self)
+            
+            XCTAssertEqual(offerJsonStruct1.id, offers.first?.id)
+            XCTAssertEqual(offerJsonStruct2.id, offers.last?.id)
+            
+        } catch {
+            XCTFail("Failed to decode JSON data using \([Offer].self).")
         }
     }
     
     func testOfferToggle() {
+        var offer: Offer
         
+        do {
+            offer = try encodeDecode(jsonObject: offerJsonStruct1.dictionary, type: Offer.self)
+            
+            XCTAssertEqual(offerJsonStruct1.id, offer.id)
+            XCTAssertFalse(offer.isFavorited)
+            offer.toggleFavorited()
+            XCTAssertTrue(offer.isFavorited)
+            
+        } catch {
+            XCTFail("Failed to decode JSON data using \(Offer.self).")
+        }
+    }
+    
+    private func encodeDecode<T: Decodable>(jsonObject: Any, type: T.Type) throws -> T {
+        let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
+        return try JSONDecoder().decode(type, from: jsonData)
     }
     
 }
