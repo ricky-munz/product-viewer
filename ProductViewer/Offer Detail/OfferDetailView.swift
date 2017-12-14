@@ -10,6 +10,12 @@ import UIKit
 
 class OfferDetailView: UIView {
 
+    private enum Metrics {
+        static let horizontalMargin: CGFloat = 32.0
+        static let topMargin: CGFloat = 16.0
+        static let screenWidthRatio: CGFloat = 0.6 * screenWidth
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -85,13 +91,15 @@ class OfferDetailView: UIView {
     }
     
     func setupLayout() {
-        addConstraints(format: "H:|-32-[v0]-32-|", views: favoritableImageView)
-        addConstraints(format: "H:|-32-[v0]-32-|", views: favoriteButton)
-        addConstraints(format: "H:|-32-[v0]-32-|", views: stackView)
+        let horizontalMetrics = ["hm": Metrics.horizontalMargin]
+        addConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: favoritableImageView)
+        addConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: favoriteButton)
+        addConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: stackView)
         
-        let screenWidthRatio = screenWidth * 0.6
-
-        addConstraints(format: "V:|-16-[v0(>=\(screenWidthRatio))]-[v1]-[v2]", views: favoritableImageView, favoriteButton, stackView)
+        let verticalMetrics = ["tm": Metrics.topMargin, "swr": Metrics.screenWidthRatio]
+        addConstraints(format: "V:|-tm-[v0(>=swr)]-[v1]-[v2]",
+                       metrics: verticalMetrics,
+                       views: favoritableImageView, favoriteButton, stackView)
     }
     
     func setFavoriteIndicator(favorited: Bool) {

@@ -10,12 +10,19 @@ import UIKit
 
 class FavoritableImageView: UIView {
 
+    enum Metrics {
+        static let margin: CGFloat = 6
+        static let favoriteImageSideLength: CGFloat = 30
+        static let cornerRadius: CGFloat = 5.0
+        static let imageFadeInDuration = 0.2
+    }
+    
     private var isFavorited = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        layer.cornerRadius = 5
+        layer.cornerRadius = Metrics.cornerRadius
         backgroundColor = .imageBackgroundGray
         
         addSubviews()
@@ -26,17 +33,14 @@ class FavoritableImageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let defaultImage: UIImage? = {
-       return UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate)
-    }()
-    
-    let unavailableImage: UIImage? = {
-        return UIImage(named: "Unavailable")?.withRenderingMode(.alwaysTemplate)
-    }()
+    let favoriteImage = #imageLiteral(resourceName: "StarFilled").withRenderingMode(.alwaysTemplate)
+    let nonFavoriteImage = #imageLiteral(resourceName: "StarEmpty").withRenderingMode(.alwaysTemplate)
+    let defaultImage = #imageLiteral(resourceName: "DefaultImage").withRenderingMode(.alwaysTemplate)
+    let unavailableImage = #imageLiteral(resourceName: "Unavailable").withRenderingMode(.alwaysTemplate)
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "DefaultImage")?.withRenderingMode(.alwaysTemplate)
+        imageView.image = #imageLiteral(resourceName: "DefaultImage").withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .darkGray
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +49,7 @@ class FavoritableImageView: UIView {
     
     let favoriteView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "StarEmpty")?.withRenderingMode(.alwaysTemplate)
+        imageView.image = #imageLiteral(resourceName: "StarEmpty").withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .mainAppColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -57,26 +61,31 @@ class FavoritableImageView: UIView {
     }
     
     private func setupLayout() {
-        addConstraints(format: "H:|-6-[v0]-6-|", views: imageView)
-        addConstraints(format: "V:|-6-[v0]-6-|", views: imageView)
+        let metrics = [
+            "m": Metrics.margin,
+            "l": Metrics.favoriteImageSideLength
+        ]
+        addConstraints(format: "H:|-m-[v0]-m-|", metrics: metrics, views: imageView)
+        addConstraints(format: "V:|-m-[v0]-m-|", metrics: metrics, views: imageView)
         
-        addConstraints(format: "H:[v0(30)]-6-|", views: favoriteView)
-        addConstraints(format: "V:[v0(30)]-6-|", views: favoriteView)
+        addConstraints(format: "H:[v0(l)]-m-|", metrics: metrics, views: favoriteView)
+        addConstraints(format: "V:[v0(l)]-m-|", metrics: metrics, views: favoriteView)
     }
     
     func setFavoriteIndicator(favorited: Bool) {
         if favorited {
-            favoriteView.image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
-            
+            favoriteView.image = favoriteImage
         } else {
-            favoriteView.image = UIImage(named: "StarEmpty")?.withRenderingMode(.alwaysTemplate)
+            favoriteView.image = nonFavoriteImage
         }
     }
     
     func setBackgroundImage(url urlString: String?) {
         if let urlString = urlString {
             let url = URL(string: urlString)
-            imageView.kf.setImage(with: url, placeholder: defaultImage, options: [.transition(.fade(0.2))])
+            imageView.kf.setImage(with: url,
+                                  placeholder: defaultImage,
+                                  options: [.transition(.fade(Metrics.imageFadeInDuration))])
             
         } else {
             imageView.image = unavailableImage

@@ -11,7 +11,6 @@ import UIKit
 import Kingfisher
 
 class OffersViewController: UICollectionViewController {
-
     let cellId = "cell"
     var offers = Offer.loadOffersFromJson()
     
@@ -23,7 +22,6 @@ class OffersViewController: UICollectionViewController {
         
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(OfferCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -15,7 +15,7 @@ class FavoriteButton: UIButton {
         setTitle("Favorite", for: .normal)
         backgroundColor = .mainAppColor
         tintColor = .white
-        let image = UIImage(named: "StarFilled")?.withRenderingMode(.alwaysTemplate)
+        let image = #imageLiteral(resourceName: "StarFilled").withRenderingMode(.alwaysTemplate)
         setImage(image, for: .normal)
         imageView?.contentMode = .scaleAspectFit
         imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 8)

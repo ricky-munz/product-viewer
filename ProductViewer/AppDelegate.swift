@@ -19,22 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let leftCollectionViewMargin = 12
-        let rightCollectionViewMargin = 12
-        let itemHorizontalPadding = 8
-        let widthSpacing = leftCollectionViewMargin + rightCollectionViewMargin + itemHorizontalPadding
-        
-        let itemWidth = Int(UIScreen.main.bounds.size.width) - widthSpacing
-        
-        let topCollectionViewMargin = 24
-        let itemVerticalPadding = 24
-        
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = CGFloat(itemVerticalPadding)
-        flowLayout.minimumInteritemSpacing = CGFloat(itemHorizontalPadding)
-
-        flowLayout.sectionInset = UIEdgeInsets(top: CGFloat(topCollectionViewMargin), left: CGFloat(leftCollectionViewMargin), bottom: 0, right: CGFloat(rightCollectionViewMargin))
-        flowLayout.itemSize = CGSize(width: itemWidth/2, height: itemWidth/2)
+        let flowLayout = OfferCollectionViewFlowLayout()
         let offersViewController = OffersViewController(collectionViewLayout: flowLayout)
         
         UINavigationBar.appearance().barTintColor = .mainAppColor
