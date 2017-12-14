@@ -8,9 +8,10 @@
 
 import UIKit
 
+/// ImageView with a togglable 'favorite' indicator. The main image for this view utilizes the Kingfisher library to fetch images asynchronously and cache them in memory and on the disk.
 class FavoritableImageView: UIView {
 
-    enum Metrics {
+    private enum Metrics {
         static let margin: CGFloat = 6
         static let favoriteImageSideLength: CGFloat = 30
         static let cornerRadius: CGFloat = 5.0
@@ -38,6 +39,7 @@ class FavoritableImageView: UIView {
     let defaultImage = #imageLiteral(resourceName: "DefaultImage").withRenderingMode(.alwaysTemplate)
     let unavailableImage = #imageLiteral(resourceName: "Unavailable").withRenderingMode(.alwaysTemplate)
     
+    /// Main image displayed by this ImageView.
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "DefaultImage").withRenderingMode(.alwaysTemplate)
@@ -47,10 +49,11 @@ class FavoritableImageView: UIView {
         return imageView
     }()
     
+    /// Favorite image indicator. Defaults to 'unfavorited' and can be toggled between 'favorited' and 'unfavorited' images.
     let favoriteView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "StarEmpty").withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .mainThemeColor
+        imageView.tintColor = .primaryThemeColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -65,13 +68,14 @@ class FavoritableImageView: UIView {
             "m": Metrics.margin,
             "l": Metrics.favoriteImageSideLength
         ]
-        addConstraints(format: "H:|-m-[v0]-m-|", metrics: metrics, views: imageView)
-        addConstraints(format: "V:|-m-[v0]-m-|", metrics: metrics, views: imageView)
+        activateConstraints(format: "H:|-m-[v0]-m-|", metrics: metrics, views: imageView)
+        activateConstraints(format: "V:|-m-[v0]-m-|", metrics: metrics, views: imageView)
         
-        addConstraints(format: "H:[v0(l)]-m-|", metrics: metrics, views: favoriteView)
-        addConstraints(format: "V:[v0(l)]-m-|", metrics: metrics, views: favoriteView)
+        activateConstraints(format: "H:[v0(l)]-m-|", metrics: metrics, views: favoriteView)
+        activateConstraints(format: "V:[v0(l)]-m-|", metrics: metrics, views: favoriteView)
     }
     
+    /// Set the favorite indicator for a 'favorited' state.
     func setFavoriteIndicator(favorited: Bool) {
         if favorited {
             favoriteView.image = favoriteImage
@@ -80,6 +84,17 @@ class FavoritableImageView: UIView {
         }
     }
     
+    /**
+     Set url for the background image for this view. A default image is set while waiting for the fetch result. If a fetch result fails, the default image will remain. If nil is passed for parameter 'url' an 'unavailable' image will be set.
+     
+     The image is fetched asynchronously from a web service if the image has not already been cached. This method utilizes both memory and disk caching. This functionality is implemented using the Kingfisher library.
+     - note: Since this method could start an asynchronous web call, the call should be canceled if the image is no longer needed using the following method:
+     
+            favoritableImageView.cancelImageFetch()
+     
+     - parameters:
+        - url: URL string for image to be fetched.
+     */
     func setBackgroundImage(url urlString: String?) {
         if let urlString = urlString {
             let url = URL(string: urlString)
@@ -92,6 +107,7 @@ class FavoritableImageView: UIView {
         }
     }
     
+    /// Cancel the image download task bound to the image view if it is running. Nothing will happen if the downloading has already finished.
     func cancelImageFetch() {
         imageView.kf.cancelDownloadTask()
     }

@@ -6,6 +6,7 @@
 //  Copyright © 2017 Richard S. Munz. All rights reserved.
 //
 
+import Kingfisher
 import UIKit
 
 @UIApplicationMain
@@ -20,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let flowLayout = OfferCollectionViewFlowLayout()
-        let offersViewController = OffersViewController(collectionViewLayout: flowLayout)
+        let offersViewController = OffersCollectionViewController(collectionViewLayout: flowLayout)
         
-        UINavigationBar.appearance().barTintColor = .mainThemeColor
+        UINavigationBar.appearance().barTintColor = .primaryThemeColor
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         UINavigationBar.appearance().isTranslucent = false

@@ -8,9 +8,8 @@
 
 import UIKit
 
+/// Offer Collection View Cell shows an image of the offer and the 'favorite' state. It can be populated with an offer object.
 class OfferCollectionViewCell: UICollectionViewCell {
-    
-    private var isFavorited = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +31,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
     
     let valueLabel: UILabel = {
         let label = UILabel()
-        label.setAttributedText(string: "Current Value Label", fontType: .demiBold, size: 12, color: .textGray)
+        label.setAttributedText(string: "Current Value Label", fontType: .demiBold, size: 12, color: .primaryTextColor)
         
         label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
@@ -43,7 +42,7 @@ class OfferCollectionViewCell: UICollectionViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.setAttributedText(string: "Name Label", fontType: .regular, size: 11, color: .textGray)
+        label.setAttributedText(string: "Name Label", fontType: .regular, size: 11, color: .primaryTextColor)
         
         label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
@@ -60,21 +59,27 @@ class OfferCollectionViewCell: UICollectionViewCell {
     
     private func setupLayout() {
         //Horizontal
-        addConstraints(format: "H:|[v0]|", views: favoritableImageView)
-        addConstraints(format: "H:|[v0]|", views: valueLabel)
-        addConstraints(format: "H:|[v0]|", views: nameLabel)
+        activateConstraints(format: "H:|[v0]|", views: favoritableImageView)
+        activateConstraints(format: "H:|[v0]|", views: valueLabel)
+        activateConstraints(format: "H:|[v0]|", views: nameLabel)
         
         //Vertical
-        addConstraints(format: "V:|[v0]-[v1]-[v2]|", views: favoritableImageView, valueLabel, nameLabel)
+        activateConstraints(format: "V:|[v0]-[v1]-[v2]|", views: favoritableImageView, valueLabel, nameLabel)
     }
     
-    func setView(offer: Offer) {
+    /**
+     Set view with offer details.
+     - parameters:
+        - offer: Offer object to populate view details.
+     */
+    func set(offer: Offer) {
         valueLabel.setAttributedText(string: offer.value)
         nameLabel.setAttributedText(string: offer.name)
         favoritableImageView.setFavoriteIndicator(favorited: offer.isFavorited)
         favoritableImageView.setBackgroundImage(url: offer.url)
     }
     
+    ///Cancel the image download task bound to the image view if it is running. Nothing will happen if the downloading has already finished. Should be called if cell has disappeared from view.
     func cancelImageFetch() {
         favoritableImageView.cancelImageFetch()
     }

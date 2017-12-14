@@ -8,10 +8,12 @@
 
 import UIKit
 
+/// The screen width of the current device.
 public var screenWidth: CGFloat {
     return UIScreen.main.bounds.width
 }
 
+/// The screen height of the current device.
 public var screenHeight: CGFloat {
     return UIScreen.main.bounds.height
 }

@@ -6,15 +6,14 @@
 //  Copyright © 2017 Richard S. Munz. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import Kingfisher
 
-class OffersViewController: UICollectionViewController {
-    let cellId = "cell"
-    var offers = Offer.loadOffersFromJson()
+///Offers Collection View Controller populates cells based on offer data. Tapping on a cell presents the detail view of that offer.
+class OffersCollectionViewController: UICollectionViewController {
+    private let cellId = "cell"
+    private var offers = Offer.loadOffersFromJson()
     
-    //MARK: - View Life Cycle Methods
+    //MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,20 +38,20 @@ class OffersViewController: UICollectionViewController {
             fatalError("Failed to dequeue OfferCollectionViewCell.")
         }
         
-        let offer = offers[indexPath.row]
-        cell.setView(offer: offer)
+        cell.set(offer: offers[indexPath.row])
         
         return cell
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = OfferDetailViewController(offer: offers[indexPath.row])
-        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? OfferCollectionViewCell else { return }
         cell.cancelImageFetch()
+    }
+    
+    //MARK: - Collection View Delegate Methods
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = OfferDetailViewController(offer: offers[indexPath.row])
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
 }

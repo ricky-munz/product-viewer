@@ -8,7 +8,9 @@
 
 import UIKit
 
+/// Offer Collection View Flow Layout creates a new flow layout with static app metrics and calculations to satisfy design requirements.
 class OfferCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
     private enum Metrics {
         static let horizontalMargin: CGFloat = 12.0
         static let horizontalPadding: CGFloat = 8.0

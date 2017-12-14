@@ -8,11 +8,13 @@
 
 import UIKit
 
+/// Offer Detail View Controller allows the user to view details of an offer and 'favorite' an item.
 class OfferDetailViewController: UIViewController {
 
     var favoriteButton: UIButton?
     var offer: Offer
 
+    //MARK: - Init Methods
     init(offer: Offer) {
         self.offer = offer
         super.init(nibName: nil, bundle: nil)
@@ -22,6 +24,7 @@ class OfferDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Offer Detail"
@@ -36,6 +39,7 @@ class OfferDetailViewController: UIViewController {
         favoriteButton = detailView.favoriteButton
     }
     
+    //MARK: - Target Methods
     @objc func favoriteButtonTapped() {
         guard let view = view as? OfferDetailView else { return }
         offer.toggleFavorited()

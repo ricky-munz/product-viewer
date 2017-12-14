@@ -17,7 +17,7 @@
 		275BDD1C1FDF6CC6002F662A /* FavoritableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BDD1B1FDF6CC6002F662A /* FavoritableImageView.swift */; };
 		275BDD201FE0297B002F662A /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BDD1F1FE0297B002F662A /* FavoriteButton.swift */; };
 		277630C11FDD897B0048AC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C01FDD897B0048AC60 /* AppDelegate.swift */; };
-		277630C31FDD897B0048AC60 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C21FDD897B0048AC60 /* OffersViewController.swift */; };
+		277630C31FDD897B0048AC60 /* OffersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630C21FDD897B0048AC60 /* OffersCollectionViewController.swift */; };
 		277630CB1FDD897B0048AC60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277630C91FDD897B0048AC60 /* LaunchScreen.storyboard */; };
 		277630D61FDD897C0048AC60 /* ProductViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630D51FDD897C0048AC60 /* ProductViewerTests.swift */; };
 		277630E11FDD897C0048AC60 /* ProductViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277630E01FDD897C0048AC60 /* ProductViewerUITests.swift */; };
@@ -49,7 +49,7 @@
 
 /* Begin PBXFileReference section */
 		1D9BFEB324379BB323AE8603 /* Pods-ProductViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductViewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProductViewer/Pods-ProductViewer.debug.xcconfig"; sourceTree = "<group>"; };
-		27387D9E1FDEE5AD00D5661C /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Offer.swift; path = ../../../productViewer/ProductViewer/Offers/Offer.swift; sourceTree = "<group>"; };
+		27387D9E1FDEE5AD00D5661C /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		27387DA11FDEF62300D5661C /* OfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
 		27387DA41FDF2A5900D5661C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		27387DA61FDF380300D5661C /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = "../../../productViewer/ProductViewer/Type Extensions/UIViewExtension.swift"; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		275BDD1F1FE0297B002F662A /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		277630BD1FDD897B0048AC60 /* ProductViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277630C01FDD897B0048AC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		277630C21FDD897B0048AC60 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
+		277630C21FDD897B0048AC60 /* OffersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewController.swift; sourceTree = "<group>"; };
 		277630CA1FDD897B0048AC60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		277630CC1FDD897B0048AC60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277630D11FDD897C0048AC60 /* ProductViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +111,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2726DBC91FE2E7D4003CE073 /* Offer */ = {
+			isa = PBXGroup;
+			children = (
+				27387D9E1FDEE5AD00D5661C /* Offer.swift */,
+				27582A531FDD92F2000155D5 /* Offer Collection */,
+				27387DA01FDEF60700D5661C /* Offer Detail */,
+			);
+			path = Offer;
+			sourceTree = "<group>";
+		};
 		27387DA01FDEF60700D5661C /* Offer Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,14 +141,13 @@
 			path = "Type Extensions";
 			sourceTree = "<group>";
 		};
-		27582A531FDD92F2000155D5 /* Offers */ = {
+		27582A531FDD92F2000155D5 /* Offer Collection */ = {
 			isa = PBXGroup;
 			children = (
-				277630C21FDD897B0048AC60 /* OffersViewController.swift */,
+				277630C21FDD897B0048AC60 /* OffersCollectionViewController.swift */,
 				27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */,
-				27387D9E1FDEE5AD00D5661C /* Offer.swift */,
 			);
-			path = Offers;
+			path = "Offer Collection";
 			sourceTree = "<group>";
 		};
 		275BDD1A1FDF6C58002F662A /* Views */ = {
@@ -178,8 +187,7 @@
 				2776C2461FE0764300F3873D /* Globals */,
 				275BDD1A1FDF6C58002F662A /* Views */,
 				27387DA31FDF2A3B00D5661C /* Type Extensions */,
-				27387DA01FDEF60700D5661C /* Offer Detail */,
-				27582A531FDD92F2000155D5 /* Offers */,
+				2726DBC91FE2E7D4003CE073 /* Offer */,
 				277630C01FDD897B0048AC60 /* AppDelegate.swift */,
 				277630C91FDD897B0048AC60 /* LaunchScreen.storyboard */,
 				277630CC1FDD897B0048AC60 /* Info.plist */,
@@ -534,7 +542,7 @@
 				279E37291FE20D9600BF5BBA /* OfferCollectionViewFlowLayout.swift in Sources */,
 				275BDD191FDF682B002F662A /* OfferDetailView.swift in Sources */,
 				27387D9F1FDEE5AD00D5661C /* Offer.swift in Sources */,
-				277630C31FDD897B0048AC60 /* OffersViewController.swift in Sources */,
+				277630C31FDD897B0048AC60 /* OffersCollectionViewController.swift in Sources */,
 				2776C2431FE0559100F3873D /* UILabelExtension.swift in Sources */,
 				27582A521FDD9265000155D5 /* OfferCollectionViewCell.swift in Sources */,
 				27387DA51FDF2A5900D5661C /* ColorExtension.swift in Sources */,

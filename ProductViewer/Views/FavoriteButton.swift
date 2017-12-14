@@ -8,12 +8,13 @@
 
 import UIKit
 
+/// Button with 'favorite' image denoting function.
 class FavoriteButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setTitle("Favorite", for: .normal)
-        backgroundColor = .mainThemeColor
+        backgroundColor = .primaryThemeColor
         tintColor = .white
         let image = #imageLiteral(resourceName: "StarFilled").withRenderingMode(.alwaysTemplate)
         setImage(image, for: .normal)

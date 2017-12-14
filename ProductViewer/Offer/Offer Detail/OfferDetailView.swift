@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Offer Detail View includes an image of the offer with a 'favorite' indicator and a button for toggling the 'favorite' state.
 class OfferDetailView: UIView {
 
     private enum Metrics {
@@ -42,7 +43,7 @@ class OfferDetailView: UIView {
         return button
     }()
     
-    let stackView: UIStackView = {
+    let labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
@@ -80,28 +81,33 @@ class OfferDetailView: UIView {
     }()
     
     func addSubviews() {
-        stackView.addArrangedSubview(nameLabel)
-        stackView.addArrangedSubview(descriptionLabel)
-        stackView.addArrangedSubview(termsLabel)
-        stackView.addArrangedSubview(valueLabel)
+        labelStackView.addArrangedSubview(nameLabel)
+        labelStackView.addArrangedSubview(descriptionLabel)
+        labelStackView.addArrangedSubview(termsLabel)
+        labelStackView.addArrangedSubview(valueLabel)
         
         addSubview(favoritableImageView)
         addSubview(favoriteButton)
-        addSubview(stackView)
+        addSubview(labelStackView)
     }
     
     func setupLayout() {
         let horizontalMetrics = ["hm": Metrics.horizontalMargin]
-        addConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: favoritableImageView)
-        addConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: favoriteButton)
-        addConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: stackView)
+        activateConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: favoritableImageView)
+        activateConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: favoriteButton)
+        activateConstraints(format: "H:|-hm-[v0]-hm-|", metrics: horizontalMetrics, views: labelStackView)
         
         let verticalMetrics = ["tm": Metrics.topMargin, "swr": Metrics.screenWidthRatio]
-        addConstraints(format: "V:|-tm-[v0(>=swr)]-[v1]-[v2]",
+        activateConstraints(format: "V:|-tm-[v0(>=swr)]-[v1]-[v2]",
                        metrics: verticalMetrics,
-                       views: favoritableImageView, favoriteButton, stackView)
+                       views: favoritableImageView, favoriteButton, labelStackView)
     }
 
+    /**
+     Set view with offer details.
+     - parameters:
+        - offer: Offer object to populate view details.
+     */
     func set(offer: Offer) {
         favoritableImageView.setBackgroundImage(url: offer.url)
         
@@ -113,6 +119,7 @@ class OfferDetailView: UIView {
         setFavoriteIndicator(favorited: offer.isFavorited)
     }
     
+    /// Set favorite indicator with 'favorite' state.
     func setFavoriteIndicator(favorited: Bool) {
         favoritableImageView.setFavoriteIndicator(favorited: favorited)
     }
