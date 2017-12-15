@@ -54,7 +54,7 @@
 		27387DA41FDF2A5900D5661C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		27387DA61FDF380300D5661C /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = "../../../productViewer/ProductViewer/Type Extensions/UIViewExtension.swift"; sourceTree = "<group>"; };
 		27582A511FDD9265000155D5 /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
-		27582A561FDDF3C6000155D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../productViewer/Assets.xcassets; sourceTree = "<group>"; };
+		27582A561FDDF3C6000155D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		275BDD181FDF682B002F662A /* OfferDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailView.swift; sourceTree = "<group>"; };
 		275BDD1B1FDF6CC6002F662A /* FavoritableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritableImageView.swift; sourceTree = "<group>"; };
 		275BDD1F1FE0297B002F662A /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
